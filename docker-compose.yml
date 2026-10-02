@@ -1,0 +1,34 @@
+services:
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:0.144.0
+    command: ["--config=/etc/otelcol/config.yaml"]
+    volumes:
+      - ./collector/config.yaml:/etc/otelcol/config.yaml:ro
+      - ./out:/out
+    ports:
+      - "4317:4317"
+
+  every-20s:
+    build: .
+    environment:
+      JOB_EVERY: 20s
+      QUARKUS_OTEL_EXPORTER_OTLP_ENDPOINT: http://otel-collector:4317
+      QUARKUS_OTEL_RESOURCE_ATTRIBUTES: service.name=every-20s
+    depends_on: [otel-collector]
+
+  every-25s:
+    build: .
+    environment:
+      JOB_EVERY: 25s
+      QUARKUS_OTEL_EXPORTER_OTLP_ENDPOINT: http://otel-collector:4317
+      QUARKUS_OTEL_RESOURCE_ATTRIBUTES: service.name=every-25s
+    depends_on: [otel-collector]
+
+  every-20s-timeout-65s:
+    build: .
+    environment:
+      JOB_EVERY: 20s
+      QUARKUS_OTEL_EXPORTER_OTLP_TRACES_TIMEOUT: 65s
+      QUARKUS_OTEL_EXPORTER_OTLP_ENDPOINT: http://otel-collector:4317
+      QUARKUS_OTEL_RESOURCE_ATTRIBUTES: service.name=every-20s-timeout-65s
+    depends_on: [otel-collector]

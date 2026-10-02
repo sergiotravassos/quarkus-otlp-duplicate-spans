@@ -1,0 +1,275 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: e7-3157-20s
+  namespace: otlp-repro
+  labels:
+    experiencia: e7
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: e7-3157-20s
+  template:
+    metadata:
+      labels:
+        app: e7-3157-20s
+    spec:
+      containers:
+        - name: app
+          image: image-registry.openshift-image-registry.svc:5000/otlp-repro/repro-jvm-3157:latest
+          env:
+            - name: JOB_EVERY
+              value: 20s
+            - name: QUARKUS_OTEL_EXPORTER_OTLP_ENDPOINT
+              value: http://repro-collector.otlp-repro.svc:4317
+            - name: QUARKUS_OTEL_RESOURCE_ATTRIBUTES
+              value: service.name=e7-3.15.7-every-20s
+          resources:
+            requests:
+              memory: 128Mi
+            limits:
+              memory: 256Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: e7-3157-20s-t65
+  namespace: otlp-repro
+  labels:
+    experiencia: e7
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: e7-3157-20s-t65
+  template:
+    metadata:
+      labels:
+        app: e7-3157-20s-t65
+    spec:
+      containers:
+        - name: app
+          image: image-registry.openshift-image-registry.svc:5000/otlp-repro/repro-jvm-3157:latest
+          env:
+            - name: JOB_EVERY
+              value: 20s
+            - name: QUARKUS_OTEL_EXPORTER_OTLP_TRACES_TIMEOUT
+              value: 65s
+            - name: QUARKUS_OTEL_EXPORTER_OTLP_TIMEOUT
+              value: 65s
+            - name: QUARKUS_OTEL_EXPORTER_OTLP_ENDPOINT
+              value: http://repro-collector.otlp-repro.svc:4317
+            - name: QUARKUS_OTEL_RESOURCE_ATTRIBUTES
+              value: service.name=e7-3.15.7-every-20s-t65
+          resources:
+            requests:
+              memory: 128Mi
+            limits:
+              memory: 256Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: e7-3157-30s
+  namespace: otlp-repro
+  labels:
+    experiencia: e7
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: e7-3157-30s
+  template:
+    metadata:
+      labels:
+        app: e7-3157-30s
+    spec:
+      containers:
+        - name: app
+          image: image-registry.openshift-image-registry.svc:5000/otlp-repro/repro-jvm-3157:latest
+          env:
+            - name: JOB_EVERY
+              value: 30s
+            - name: QUARKUS_OTEL_EXPORTER_OTLP_ENDPOINT
+              value: http://repro-collector.otlp-repro.svc:4317
+            - name: QUARKUS_OTEL_RESOURCE_ATTRIBUTES
+              value: service.name=e7-3.15.7-every-30s
+          resources:
+            requests:
+              memory: 128Mi
+            limits:
+              memory: 256Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: e7-3157-30s-t65
+  namespace: otlp-repro
+  labels:
+    experiencia: e7
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: e7-3157-30s-t65
+  template:
+    metadata:
+      labels:
+        app: e7-3157-30s-t65
+    spec:
+      containers:
+        - name: app
+          image: image-registry.openshift-image-registry.svc:5000/otlp-repro/repro-jvm-3157:latest
+          env:
+            - name: JOB_EVERY
+              value: 30s
+            - name: QUARKUS_OTEL_EXPORTER_OTLP_TRACES_TIMEOUT
+              value: 65s
+            - name: QUARKUS_OTEL_EXPORTER_OTLP_TIMEOUT
+              value: 65s
+            - name: QUARKUS_OTEL_EXPORTER_OTLP_ENDPOINT
+              value: http://repro-collector.otlp-repro.svc:4317
+            - name: QUARKUS_OTEL_RESOURCE_ATTRIBUTES
+              value: service.name=e7-3.15.7-every-30s-t65
+          resources:
+            requests:
+              memory: 128Mi
+            limits:
+              memory: 256Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: e7-3157-60s
+  namespace: otlp-repro
+  labels:
+    experiencia: e7
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: e7-3157-60s
+  template:
+    metadata:
+      labels:
+        app: e7-3157-60s
+    spec:
+      containers:
+        - name: app
+          image: image-registry.openshift-image-registry.svc:5000/otlp-repro/repro-jvm-3157:latest
+          env:
+            - name: JOB_EVERY
+              value: 60s
+            - name: QUARKUS_OTEL_EXPORTER_OTLP_ENDPOINT
+              value: http://repro-collector.otlp-repro.svc:4317
+            - name: QUARKUS_OTEL_RESOURCE_ATTRIBUTES
+              value: service.name=e7-3.15.7-every-60s
+          resources:
+            requests:
+              memory: 128Mi
+            limits:
+              memory: 256Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: e7-3157-60s-t65
+  namespace: otlp-repro
+  labels:
+    experiencia: e7
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: e7-3157-60s-t65
+  template:
+    metadata:
+      labels:
+        app: e7-3157-60s-t65
+    spec:
+      containers:
+        - name: app
+          image: image-registry.openshift-image-registry.svc:5000/otlp-repro/repro-jvm-3157:latest
+          env:
+            - name: JOB_EVERY
+              value: 60s
+            - name: QUARKUS_OTEL_EXPORTER_OTLP_TRACES_TIMEOUT
+              value: 65s
+            - name: QUARKUS_OTEL_EXPORTER_OTLP_TIMEOUT
+              value: 65s
+            - name: QUARKUS_OTEL_EXPORTER_OTLP_ENDPOINT
+              value: http://repro-collector.otlp-repro.svc:4317
+            - name: QUARKUS_OTEL_RESOURCE_ATTRIBUTES
+              value: service.name=e7-3.15.7-every-60s-t65
+          resources:
+            requests:
+              memory: 128Mi
+            limits:
+              memory: 256Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: e7-3401fix-20s
+  namespace: otlp-repro
+  labels:
+    experiencia: e7
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: e7-3401fix-20s
+  template:
+    metadata:
+      labels:
+        app: e7-3401fix-20s
+    spec:
+      containers:
+        - name: app
+          image: image-registry.openshift-image-registry.svc:5000/otlp-repro/repro-jvm-3401fix:latest
+          env:
+            - name: JOB_EVERY
+              value: 20s
+            - name: QUARKUS_OTEL_EXPORTER_OTLP_ENDPOINT
+              value: http://repro-collector.otlp-repro.svc:4317
+            - name: QUARKUS_OTEL_RESOURCE_ATTRIBUTES
+              value: service.name=e7-3.40.1fix-every-20s
+          resources:
+            requests:
+              memory: 128Mi
+            limits:
+              memory: 256Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: e7-3401fix-60s
+  namespace: otlp-repro
+  labels:
+    experiencia: e7
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: e7-3401fix-60s
+  template:
+    metadata:
+      labels:
+        app: e7-3401fix-60s
+    spec:
+      containers:
+        - name: app
+          image: image-registry.openshift-image-registry.svc:5000/otlp-repro/repro-jvm-3401fix:latest
+          env:
+            - name: JOB_EVERY
+              value: 60s
+            - name: QUARKUS_OTEL_EXPORTER_OTLP_ENDPOINT
+              value: http://repro-collector.otlp-repro.svc:4317
+            - name: QUARKUS_OTEL_RESOURCE_ATTRIBUTES
+              value: service.name=e7-3.40.1fix-every-60s
+          resources:
+            requests:
+              memory: 128Mi
+            limits:
+              memory: 256Mi
